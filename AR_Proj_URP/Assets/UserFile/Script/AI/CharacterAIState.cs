@@ -26,20 +26,23 @@ public class AIStateIdle : GameStateMachine.StateNodeBase
     public override void OnUpdate()
     {
         base.OnUpdate();
-      
+
+        _waitTime -= Time.deltaTime;
+        if (_waitTime > 0.0f) { return; }
+
+
         //移動場所指定があった場合
+        var input = StateMgr.Blackboard.GetValue<StateBaseAIInputProvider>("AIInput");
 
-        //①目的地の
+        var target = input.TargetSearcher.GetClosestTarget();
 
-      _waitTime -= Time.deltaTime;
-        if( _waitTime < 0.0f )
+        //ターゲットがいるか
+        if (target.HasValue)
         {
-            Debug.Log("歩きに移行");
-          //  Animator.SetTrigger("GoInduction");
-
+            Debug.Log("発見");
+            Animator.SetTrigger("GoInduction");
             return;
         }
-
     }
 }
 
@@ -70,25 +73,32 @@ public class AIStateInduction : GameStateMachine.StateNodeBase
         base.OnUpdate();
         var input = StateMgr.Blackboard.GetValue<StateBaseAIInputProvider>("AIInput");
 
-        _waitTime -= Time.deltaTime;
-        if(_waitTime<0.0f)
+        var target = input.TargetSearcher.GetClosestTarget();
+
+        //ターゲットがいるか
+        if (target != null)
         {
-            Animator.SetTrigger("GoIdle");
-            input.AxisL = Vector2.zero;
-            return;
+            //相手の座標
+            input.PathFinding.SetDestination(target.Value.MainObjParam.transform.position);
+       Vector3 v = input.PathFinding.DesiredVelocity;
+            v.y = 0;
+            v.Normalize();
+            v *= 0.5f;
+
+            //移動入力
+            input.AxisL = new Vector2(v.x, v.z);
+            //Animator.SetTrigger("GoChase");
 
         }
 
-        //移動量設定
-        
-        //①ターゲットの検索
+        //到着したか
+        if (input.PathFinding.IsArrived())
+        {
 
-        //②移動
+            Animator.SetTrigger("GoIdle");
+            input.AxisL = Vector2.zero;
+        }
 
-        //③到着したかどうかの判定
 
-        input.AxisL = new Vector2(0.0f,0.5f);
-
-        
     }
 }

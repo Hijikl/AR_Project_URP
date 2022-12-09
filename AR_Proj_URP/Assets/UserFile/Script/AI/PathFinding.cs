@@ -13,7 +13,7 @@ public class PathFinding : MonoBehaviour
     //Œo˜H’Tõ‚·‚é–{‘Ì
     NavMeshAgent _agent;
 
-    //‚Æ‚¤‚¿‚á‚­‚µ‚½‚©
+    //“’…‚µ‚½‚©
     public bool IsArrived()
     {
 //        get

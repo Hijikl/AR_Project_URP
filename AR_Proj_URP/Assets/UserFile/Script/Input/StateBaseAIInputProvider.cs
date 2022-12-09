@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class StateBaseAIInputProvider : BaseInputProvider
 {
-    ////éãäoèÓïÒ
-    //[SerializeField] TargetSearcher _targetSearcher;
-    //public TargetSearcher TargetSearcher => _targetSearcher;
+    //éãäoèÓïÒ
+    [SerializeField] TargetSearcher _targetSearcher;
+    public TargetSearcher TargetSearcher => _targetSearcher;
 
-    ////åoòHíTçı
-    //[SerializeField] PathFinding _pathFinding;
-    //public PathFinding PathFinding => _pathFinding;
+    //åoòHíTçı
+    [SerializeField] PathFinding _pathFinding;
+    public PathFinding PathFinding => _pathFinding;
 
     //Ç†Ç∆Ç≈è¡Ç∑
     private void Awake()

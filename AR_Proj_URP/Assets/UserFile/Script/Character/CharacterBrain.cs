@@ -59,10 +59,11 @@ public class CharacterBrain : MonoBehaviour, ITapApplicate
     {
         _charaCtrl.Move(_velocity * Time.deltaTime);
 
-        if (_charaCtrl.isGrounded)
-        {
-            Debug.Log("着地判定");
-        }
+          //着地した時は重力が相殺される
+            if (_charaCtrl.isGrounded)
+            {
+                _velocity.y = 0;
+            }
 
       
 
@@ -110,6 +111,11 @@ public class CharacterBrain : MonoBehaviour, ITapApplicate
                 brain._animator.SetBool("IsMoving", true);
 
             }
+
+            //重力
+            brain._velocity.y += -9.8f * Time.deltaTime;
+
+
             //アピール
             if (brain._inputProvider.GetButtonAppeal())
             {
@@ -124,6 +130,19 @@ public class CharacterBrain : MonoBehaviour, ITapApplicate
         public override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
+
+            var brain = StateMgr.Blackboard.GetValue<CharacterBrain>("Brain");
+            //摩擦は空中と地上で変えるべき
+            if (brain._charaCtrl.isGrounded)
+            {
+                //地上にいる時
+                brain._velocity *= 0.85f;
+            }
+            else
+            {
+                //空中にいる時(空気抵抗分)
+                brain._velocity *= 0.98f;
+            }
         }
 
 
@@ -181,6 +200,10 @@ public class CharacterBrain : MonoBehaviour, ITapApplicate
             brain._velocity += forward * Time.deltaTime;
 
 
+            //重力
+            brain._velocity.y += -9.8f * Time.deltaTime;
+
+
             //向き
             if (axisPow > 0.01f)
             {
@@ -209,6 +232,18 @@ public class CharacterBrain : MonoBehaviour, ITapApplicate
         public override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
+            var brain = StateMgr.Blackboard.GetValue<CharacterBrain>("Brain");
+            //摩擦は空中と地上で変えるべき
+            if (brain._charaCtrl.isGrounded)
+            {
+                //地上にいる時
+                brain._velocity *= 0.85f;
+            }
+            else
+            {
+                //空中にいる時(空気抵抗分)
+                brain._velocity *= 0.98f;
+            }
         }
 
 
