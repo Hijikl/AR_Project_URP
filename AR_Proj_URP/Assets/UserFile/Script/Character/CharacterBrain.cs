@@ -254,7 +254,9 @@ public class CharacterBrain : MonoBehaviour, ITapApplicate
     [System.Serializable]
     public class ASAppeal : GameStateMachine.StateNodeBase
     {
-        Tweener _nowTween;
+        Tweener _nowTween=null;
+
+        Quaternion _toQuaternion;
 
         //このステートに"入った"時１度だけ実行
         public override  void OnEnter()
@@ -265,28 +267,19 @@ public class CharacterBrain : MonoBehaviour, ITapApplicate
 
             brain._faceAnimator.SetTrigger("GoJoy");
 
-            //var faceController = StateMgr.Blackboard.GetValue<KurokumaSoft.FaceController>("FaceController");
-
-            //faceController.ChangeFace(BlendShapePreset.Joy, 0, 1, 0.5f);
-
+      
             //カメラの方向を向く(視線)
             var lookAtController = StateMgr.Blackboard.GetValue<LookAtController>("LookAtController");
             lookAtController.SetLookAtTarget(Camera.main.transform);
 
+           // var brain = StateMgr.Blackboard.GetValue<CharacterBrain>("Brain");
             //カメラの方を向く（体）
-            Vector3 vLook = Camera.main.transform.position;
+            Vector3 vLook = Camera.main.transform.position - brain.transform.position;
             vLook.y = 0;
 
-            Quaternion rotation = Quaternion.LookRotation(vLook, Vector3.up);
-           
-            brain.transform.rotation = Quaternion.RotateTowards(
-               brain.transform.rotation,   //変化前の回転
-                rotation,                   //変化後の回転
-                720 * Time.deltaTime);      //変化する角度
+            _toQuaternion = Quaternion.LookRotation(vLook, Vector3.up);
 
-           _nowTween= brain.transform.DORotateQuaternion(rotation, 1.0f);
-
-
+         
         }
 
         //このステートから"出る"時１度だけ実行
@@ -307,7 +300,13 @@ public class CharacterBrain : MonoBehaviour, ITapApplicate
         {
             base.OnUpdate();
 
-        
+            var brain = StateMgr.Blackboard.GetValue<CharacterBrain>("Brain");
+
+            brain.transform.rotation = Quaternion.RotateTowards(
+               brain.transform.rotation,   //変化前の回転
+                _toQuaternion,                   //変化後の回転
+                720 * Time.deltaTime);      //変化する角度
+
         }
 
         //一定時間ごとに実行

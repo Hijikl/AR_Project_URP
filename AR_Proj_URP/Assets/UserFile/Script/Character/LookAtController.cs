@@ -26,10 +26,10 @@ public class LookAtController : MonoBehaviour
     {
         if (targetTransform != null)
         {
-            if (targetPos.HasValue)
+           // if (targetPos.HasValue)
             {
                 animator.SetLookAtWeight(1.0f, 0.8f, 1.0f, 0.0f, 0.7f);
-                animator.SetLookAtPosition(targetPos.Value);
+                animator.SetLookAtPosition(targetTransform.position);
             }
         }
     }

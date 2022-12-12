@@ -976,6 +976,11 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 69900c7fdc634b84f93f716b499be2c4, type: 2}
     - target: {fileID: 8247039640664277667, guid: 82f14c45ab727734fb759e3018ba5a65,
         type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247039640664277667, guid: 82f14c45ab727734fb759e3018ba5a65,
+        type: 3}
       propertyPath: m_CullingMode
       value: 1
       objectReference: {fileID: 0}
