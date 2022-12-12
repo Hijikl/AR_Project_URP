@@ -1229,7 +1229,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.083333336
+  m_VoxelSize: 0.016666668
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: bc7ce6153640d2d43be984539f0df957, type: 2}
 --- !u!4 &897880257
@@ -3951,31 +3951,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5828777914968003058, guid: d9713583388043d408ea55254e12517b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.372
-      objectReference: {fileID: 0}
-    - target: {fileID: 5828777914968003058, guid: d9713583388043d408ea55254e12517b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.399
-      objectReference: {fileID: 0}
-    - target: {fileID: 6070636373549159769, guid: d9713583388043d408ea55254e12517b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6113675051384333141, guid: d9713583388043d408ea55254e12517b,
-        type: 3}
-      propertyPath: VerticalDown.CurveYRangeDegree
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6113675051384333141, guid: d9713583388043d408ea55254e12517b,
-        type: 3}
-      propertyPath: HorizontalInner.CurveYRangeDegree
-      value: 4.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9713583388043d408ea55254e12517b, type: 3}
