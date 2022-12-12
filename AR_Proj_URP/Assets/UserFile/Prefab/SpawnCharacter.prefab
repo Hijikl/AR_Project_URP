@@ -47,7 +47,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0.5
+  m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -212,7 +212,7 @@ Transform:
   m_GameObject: {fileID: 1246706264597561303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8230869645417581151}
@@ -328,9 +328,9 @@ MonoBehaviour:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.77, z: 0}
-  m_Radius: 0.18
-  m_Height: 0.74
+  m_Center: {x: 0, y: 0.81, z: 0}
+  m_Radius: 0.26
+  m_Height: 0.65
   m_CollisionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -853,6 +853,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.13871497
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236780749372671418, guid: 82f14c45ab727734fb759e3018ba5a65,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5280192195130956738, guid: 82f14c45ab727734fb759e3018ba5a65,
         type: 3}

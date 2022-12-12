@@ -107,12 +107,14 @@ public class CharacterSpawn : MonoBehaviour
         //出現させる場所
         Transform spawnTrans = _marker;
 
+        //spawnTrans.position;
+
         spawnTrans.LookAt(_mainCameraTransform.position);
         spawnTrans.eulerAngles = new Vector3(0, spawnTrans.eulerAngles.y, 0);
 
 
         //マーカーのある位置にモデルを出現させる
-        var characterObj = Instantiate(_characterPrefab, spawnTrans.position, spawnTrans.rotation, _parentTransform);
+        var characterObj = Instantiate(_characterPrefab, spawnTrans.position +new Vector3(0,0.1f,0), spawnTrans.rotation, _parentTransform);
         //  characterObj.transform.parent = _parentTransform;
 
         //カメラ目線にする
@@ -130,7 +132,7 @@ public class CharacterSpawn : MonoBehaviour
         //マーカーを非表示に
         _marker.gameObject.SetActive(false);
 
-      _planeEnable= false;
+     // _planeEnable= false;
 
         _isSpawned = true;
 

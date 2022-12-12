@@ -19,6 +19,7 @@ public class PathFinding : MonoBehaviour
 //        get
         {
             if (_agent.pathPending) return false;
+
             if (_agent.isStopped) return true;
             return _agent.remainingDistance <= _agent.stoppingDistance;
         }
@@ -34,8 +35,10 @@ public class PathFinding : MonoBehaviour
 
 
     //–Ú“I’n‚ÌÝ’è
-    public void SetDestination(Vector3 position)
+    public bool SetDestination(Vector3 position)
     {
+       if(NavMesh.GetSettingsCount() <= 0) { return false; }
+
         //”ÍˆÍŠO‚È‚çˆê”Ô‹ß‚¢êŠ‚ð‹‚ß‚é
         NavMeshHit hit;
         if(NavMesh.SamplePosition(position,out hit,10.0f,NavMesh.AllAreas)==false)
@@ -47,6 +50,7 @@ public class PathFinding : MonoBehaviour
         _agent.isStopped=false;//Agent‚ðŽ~‚ß‚é‚©
 
         _agent.SetDestination( position);
+        return true;
     }
     // Start is called before the first frame update
     void Awake()

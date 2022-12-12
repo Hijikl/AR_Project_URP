@@ -226,6 +226,7 @@ public class CharacterBrain : MonoBehaviour, ITapApplicate
                 brain._animator.SetTrigger("DoAppeal");
 
             }
+            
         }
 
         //一定時間ごとに実行
@@ -253,8 +254,10 @@ public class CharacterBrain : MonoBehaviour, ITapApplicate
     [System.Serializable]
     public class ASAppeal : GameStateMachine.StateNodeBase
     {
+        Tweener _nowTween;
+
         //このステートに"入った"時１度だけ実行
-        public override void OnEnter()
+        public override  void OnEnter()
         {
 
             base.OnEnter();
@@ -281,7 +284,7 @@ public class CharacterBrain : MonoBehaviour, ITapApplicate
                 rotation,                   //変化後の回転
                 720 * Time.deltaTime);      //変化する角度
 
-            brain.transform.DORotateQuaternion(rotation, 1.0f);
+           _nowTween= brain.transform.DORotateQuaternion(rotation, 1.0f);
 
 
         }

@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UserFile/Scene/ObjectSizeTest.unity
     guid: 744cd6b90755d714f95ed426083d92ca
+  - enabled: 0
+    path: Assets/UserFile/Scene/ObjectSizeTestBig.unity
+    guid: 20b16f909a0b77244857419f2c64d559
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f8ce26fe3bc69499b9be4b2378e97a94,
       type: 2}

@@ -31,6 +31,10 @@ public class PlayerInputManager : MonoBehaviour
     UnityEngine.UI.Button _callButton;
     bool _doAppeal = false;
 
+    [SerializeField]
+    UnityEngine.UI.Button _comeHereBtn;
+    bool _doInduction = false;
+
     void Awake()
     {
         //ÇPâÒñ⁄ÅAÉCÉìÉXÉ^ÉìÉXÇìoò^ÇµÇΩéûÇæÇØí ÇÈ
@@ -54,6 +58,12 @@ public class PlayerInputManager : MonoBehaviour
             {
                 _doAppeal = true;
             }).AddTo(this);
+    _comeHereBtn.OnClickAsObservable()
+            .Subscribe(_ =>
+            {
+                _doInduction = true;
+            }).AddTo(this);
+
 
     }
 
@@ -101,6 +111,18 @@ public class PlayerInputManager : MonoBehaviour
         if(r)Debug.Log("åƒÇŒÇÍÇΩÅI");
         
         _doAppeal = false;
+        
+        return r;
+
+    }
+    
+    public bool GamePlay_GetButtonComeHere()
+    {
+        bool r = _doInduction;
+        
+        if(r)Debug.Log("óUì±ÇµÇÎÅI");
+
+        _doInduction = false;
         
         return r;
 
